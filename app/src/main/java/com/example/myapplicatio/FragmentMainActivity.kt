@@ -2,6 +2,7 @@ package com.example.myapplicatio
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +16,11 @@ import ru.spb.designedBy239School.advancedMusicPlayer.service.BackgroundAudioSer
 
 class FragmentMainActivity :Fragment(), MyRecyclerViewAdapter.OnSongListner{
     override fun onNoteCLick(position: Int) {
-        //startService(Intent(this, BackgroundAudioService::class.java).putExtra("path", recyclerItems[position].fullName))
+        Log.d("ONCLICKLISTNER","is activiti null? "+activity.toString())
+        Log.d("ONCLICKLISTNER","FragmentMainActivity "+position.toString())
+        activity!!.startService(Intent(activity, BackgroundAudioService::class.java))//
+        // .putExtra("path", BackgroundAudioService::recyclerItems.get(BackgroundAudioService())[position].fullName))
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -28,7 +33,7 @@ class FragmentMainActivity :Fragment(), MyRecyclerViewAdapter.OnSongListner{
             startActivity(Intent(activity, PlayerAndEqualizerActivity::class.java))
         }
         recycler_view.layoutManager = LinearLayoutManager(activity)
-        val adapterR = MyRecyclerViewAdapter(MainActivity::recyclerItems.get(MainActivity()), this)
+        val adapterR = MyRecyclerViewAdapter( BackgroundAudioService::recyclerItems.get(BackgroundAudioService()), this)
         recycler_view.adapter = adapterR
     }
 }

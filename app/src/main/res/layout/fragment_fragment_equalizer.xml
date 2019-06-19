@@ -4,15 +4,151 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              tools:context=".FragmentMainActivity">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                  android:orientation="vertical">
+        <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="EQUALIZER"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="40dp"
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-            android:id="@+id/tv_fragment_main_activity"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textSize="30dp"
-            android:gravity="center"
-            android:textFontWeight="1"
-    />
+        />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="75 Hz (SUB BASS)"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+
+        />
+        <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="15dp"
+                android:id="@+id/eq_seek_bar_0"
+                android:max="1500"
+                android:min="-1500"
+                android:progress="0"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+        />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="290 Hz (BASS)"
+                android:layout_marginLeft="30dp"
+        />
+        <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="15dp"
+                android:id="@+id/eq_seek_bar_1"
+                android:max="1500"
+                android:min="-1500"
+                android:progress="0"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+        />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1130 Hz"
+                android:layout_marginLeft="30dp"
+        />
+        <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="15dp"
+                android:id="@+id/eq_seek_bar_2"
+                android:max="1500"
+                android:min="-1500"
+                android:progress="0"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+        />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4400 Hz"
+                android:layout_marginLeft="30dp"
+        />
+        <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="15dp"
+                android:id="@+id/eq_seek_bar_3"
+                android:max="1500"
+                android:min="-1500"
+                android:progress="0"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+        />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="13500 Hz"
+                android:layout_marginLeft="30dp"
+        />
+        <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="15dp"
+                android:id="@+id/eq_seek_bar_4"
+                android:max="1500"
+                android:min="-1500"
+                android:progress="0"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+        />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BASSboost(doesnt work)"
+                android:layout_marginLeft="30dp"
+        />
+        <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="15dp"
+                android:id="@+id/eq_seek_bar_BASS"
+                android:max="1000"
+                android:min="0"
+                android:progress="0"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+        />
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+        >
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/preset_1"
+                    android:text="Preset 1"
+                    android:layout_marginHorizontal="20dp"
+
+
+            />
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/preset_2"
+                    android:text="Preset 2"
+                    android:layout_marginHorizontal="10dp"
+
+
+            />
+        </LinearLayout>
+        <!--<TextView-->
+        <!--android:id="@+id/tv_fragment_main_activity"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:textSize="30dp"-->
+        <!--android:gravity="center"-->
+        <!--android:textFontWeight="1"-->
+        <!--/>-->
+    </LinearLayout>
 
 </FrameLayout>
