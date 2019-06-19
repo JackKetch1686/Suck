@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_fragment_main_activity.*
-import kotlinx.android.synthetic.main.fragment_fragment_main_activity.tv_fragment_main_activity
 import kotlinx.android.synthetic.main.fragment_fragment_playlist.*
 
 class FragmentPlaylist :Fragment(){
@@ -17,7 +16,6 @@ class FragmentPlaylist :Fragment(){
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        tv_fragment_main_activity.text="Playlists"
         toPlayListSettingsActivity.setOnClickListener{
             startActivity(Intent(activity, PlayListSettingsActivity::class.java))
         }

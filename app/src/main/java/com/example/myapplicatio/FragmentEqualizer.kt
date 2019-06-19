@@ -13,6 +13,6 @@ class FragmentEqualizer :Fragment(){
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        tv_fragment_main_activity.text="Equalizer"
+
     }
 }

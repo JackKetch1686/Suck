@@ -15,6 +15,8 @@ class FragmentPlayer :Fragment(){
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+
         //tv_fragment_main_activity.text="Player"
         backToMainActivity.setOnClickListener{
             startActivity(Intent(activity, MainActivity::class.java))
