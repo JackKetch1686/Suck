@@ -73,10 +73,8 @@ class FragmentEqualizer :Fragment() {
         eq_seek_bar_1.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
             }
-
             override fun onStartTrackingTouch(p0: SeekBar?) {
             }
-
             override fun onStopTrackingTouch(seekBar: SeekBar) {
                 equalizer.setBandLevel(1, seekBar.progress.toShort())
                 Log.d("EQ", "BAnd 1 level is ${equalizer.getBandLevel(0)}")
@@ -86,10 +84,8 @@ class FragmentEqualizer :Fragment() {
         eq_seek_bar_2.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
             }
-
             override fun onStartTrackingTouch(p0: SeekBar?) {
             }
-
             override fun onStopTrackingTouch(seekBar: SeekBar) {
                 equalizer.setBandLevel(2, seekBar.progress.toShort())
                 Log.d("EQ", "BAnd 2 level is ${equalizer.getBandLevel(2)}")
@@ -99,10 +95,8 @@ class FragmentEqualizer :Fragment() {
         eq_seek_bar_3.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
             }
-
             override fun onStartTrackingTouch(p0: SeekBar?) {
             }
-
             override fun onStopTrackingTouch(seekBar: SeekBar) {
                 equalizer.setBandLevel(3, seekBar.progress.toShort())
                 Log.d("EQ", "BAnd 3 level is ${equalizer.getBandLevel(3)}")
@@ -112,10 +106,8 @@ class FragmentEqualizer :Fragment() {
         eq_seek_bar_4.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
             }
-
             override fun onStartTrackingTouch(p0: SeekBar?) {
             }
-
             override fun onStopTrackingTouch(seekBar: SeekBar) {
                 equalizer.setBandLevel(4, seekBar.progress.toShort())
                 Log.d("EQ", "BAnd 4 level is ${equalizer.getBandLevel(4)}")
