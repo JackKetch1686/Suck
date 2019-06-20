@@ -15,6 +15,7 @@ class SaveItems {
     companion object itemsOfMusic {
         lateinit var recyclerItems: ArrayList<RecyclerItem>
     }
+
     fun returnRecyclerItems(): ArrayList<RecyclerItem> {
         Log.d("SONGSEARCHING","search...")
         val recyclerItems: ArrayList<RecyclerItem> = ArrayList()
