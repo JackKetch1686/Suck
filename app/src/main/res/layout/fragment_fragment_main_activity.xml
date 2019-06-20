@@ -10,23 +10,6 @@
                   android:layout_height="wrap_content"
                   android:orientation="vertical"
     >
-        <LinearLayout android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:orientation="horizontal"
-
-        >
-            <Button android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Pause"
-                    android:id="@+id/Pause"
-            />
-            <Button android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Play"
-                    android:id="@+id/Play"
-            />
-
-        </LinearLayout>
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"

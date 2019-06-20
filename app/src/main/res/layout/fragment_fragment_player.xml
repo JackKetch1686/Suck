@@ -13,7 +13,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:layout_weight="0.5">
             <Button
-                    android:text="backToMainActivity"
+                    android:text="Back"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/backToMainActivity"
                     android:layout_weight="1"/>
@@ -67,13 +67,12 @@
                         android:src="@android:drawable/ic_lock_silent_mode_off"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent" android:id="@+id/imageView3" android:layout_weight="1"
-
-
-                        //android:background="@android:drawable/btn_default_small"/>
+                />
 
                 <SeekBar
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent" android:id="@+id/seekBar" android:layout_weight="10"/>
+                        android:layout_height="match_parent" android:id="@+id/seekBar" android:layout_weight="10"
+                        android:progress="100"/>
             </LinearLayout>
             <LinearLayout
                     android:orientation="horizontal"
@@ -84,18 +83,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:id="@+id/imageButton2" android:layout_weight="1"/>
                 <ImageButton
-                        android:src="@android:drawable/btn_star"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:id="@+id/imageButton3" android:layout_weight="1"/>
-                <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent" android:id="@+id/imageButton5" android:layout_weight="1"
                         android:src="@android:drawable/ic_menu_share"
                 />
-                <ImageButton
-                        android:src="@android:drawable/ic_menu_manage"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:id="@+id/imageButton4" android:layout_weight="1"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

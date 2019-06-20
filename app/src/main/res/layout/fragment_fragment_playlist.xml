@@ -14,10 +14,6 @@
             android:gravity="center"
             android:textFontWeight="1"
     />
-    <Button
-            android:text="toPlayListSettingsActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/toPlayListSettingsActivity"/>
 
 
 </FrameLayout>

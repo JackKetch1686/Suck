@@ -1,6 +1,9 @@
 package com.example.myapplicatio
 
 import android.content.Intent
+import android.media.MediaPlayer
+import android.media.MediaScannerConnection
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -33,11 +36,13 @@ class FragmentMainActivity :Fragment(), MyRecyclerViewAdapter.OnSongListner{
         val adapterR = MyRecyclerViewAdapter( recyclerItems, this)
         var l = recyclerItems
         recycler_view.adapter = adapterR
-        Play.setOnClickListener {
-            BackgroundAudioService.Companion::mediaPlayer.get().start()
-        }
-        Pause.setOnClickListener {
-            BackgroundAudioService.Companion::mediaPlayer.get().pause()
-        }
+
+
+
+        var mediaPlayer = MediaPlayer.create(activity!!, R.raw.ne_s_nachala_oxxymiron)
+        BackgroundAudioService.mediaPlayer = mediaPlayer
+        BackgroundAudioService.mediaPlayer.start()
+
+
     }
 }

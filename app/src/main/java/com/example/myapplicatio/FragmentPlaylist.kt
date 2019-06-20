@@ -16,8 +16,6 @@ class FragmentPlaylist :Fragment(){
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        toPlayListSettingsActivity.setOnClickListener{
-            startActivity(Intent(activity, PlayListSettingsActivity::class.java))
-        }
+
     }
 }
