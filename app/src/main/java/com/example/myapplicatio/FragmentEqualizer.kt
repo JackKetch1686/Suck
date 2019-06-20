@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_fragment_equalizer.*
 import kotlinx.android.synthetic.main.fragment_fragment_main_activity.*
 import ru.spb.designedBy239School.advancedMusicPlayer.service.BackgroundAudioService
+import ru.spb.designedBy239School.advancedMusicPlayer.service.BackgroundAudioService.Companion.mediaPlayer
 
 class FragmentEqualizer :Fragment() {
 
@@ -28,7 +29,7 @@ class FragmentEqualizer :Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        var audioSessionId = BackgroundAudioService::mediaPlayer.get(BackgroundAudioService()).audioSessionId
+        var audioSessionId = BackgroundAudioService.mediaPlayer.audioSessionId
 
 
         //val bassboost = BassBoost(0, audioSessionId)

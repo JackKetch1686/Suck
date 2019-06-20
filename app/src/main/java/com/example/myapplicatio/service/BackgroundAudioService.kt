@@ -12,7 +12,6 @@ import ru.spb.designedBy239School.advancedMusicPlayer.adapter.RecyclerItem
 import java.io.File
 
 class BackgroundAudioService:Service(),MediaPlayer.OnCompletionListener {
-    //var recyclerItems: ArrayList<RecyclerItem> = returnRecyclerItems()
 
     companion object {
         lateinit var mediaPlayer : MediaPlayer
