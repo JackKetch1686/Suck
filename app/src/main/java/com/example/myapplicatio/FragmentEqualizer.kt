@@ -1,7 +1,6 @@
 package com.example.myapplicatio
 
-import android.media.MediaPlayer
-import android.media.audiofx.BassBoost
+
 import android.media.audiofx.Equalizer
 import android.os.Bundle
 import android.util.Log
@@ -11,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_fragment_equalizer.*
-import kotlinx.android.synthetic.main.fragment_fragment_main_activity.*
 import ru.spb.designedBy239School.advancedMusicPlayer.service.BackgroundAudioService
 
 class FragmentEqualizer :Fragment(){
@@ -21,9 +19,8 @@ class FragmentEqualizer :Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        var  audioSessionId =BackgroundAudioService::mediaPlayer.get(BackgroundAudioService()).audioSessionId
+        var  audioSessionId =BackgroundAudioService.Companion::mediaPlayer.get().audioSessionId
 
-        //val bassboost = BassBoost(0, audioSessionId)
 
 //        eq_seek_bar_BASS.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
 //            override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
