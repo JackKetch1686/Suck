@@ -2,8 +2,6 @@ package com.example.myapplicatio
 
 import android.content.Intent
 import android.media.MediaPlayer
-import android.media.MediaScannerConnection
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,9 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplicatio.SaveItems.itemsOfMusic.recyclerItems
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_fragment_main_activity.*
 import ru.spb.designedBy239School.advancedMusicPlayer.adapter.MyRecyclerViewAdapter
 import ru.spb.designedBy239School.advancedMusicPlayer.service.BackgroundAudioService

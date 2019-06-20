@@ -60,6 +60,32 @@ class MainActivity : AppCompatActivity(), MyRecyclerViewAdapter.OnSongListner {
         }
 
 
+        var authors = ArrayList<String>()
+        for (item in SaveItems.recyclerItems){
+            var isAsrtist = true
+            var artist  = item.SongAuthorName
+            for (author in authors){
+                if (artist==author) false
+            }
+            if(isAsrtist){
+                authors.add(artist)
+            }
+        }
+
+        var arrayAuthorsOfSongs = ArrayList<AuthorOfSongs>()
+        for (author in authors){
+            var songs = ArrayList<Int> ()
+            var j = 0
+            for (item in SaveItems.recyclerItems){
+                if (author==item.SongAuthorName){
+                    songs.add(j)
+                    j++
+                }
+            }
+            arrayAuthorsOfSongs.add(AuthorOfSongs(author, songs))
+        }
+        SaveAuthors.arrayAuthorsOfSongs=arrayAuthorsOfSongs
+
     }
 
     class MyViewPagerAdapter(manager: FragmentManager): FragmentPagerAdapter(manager){
