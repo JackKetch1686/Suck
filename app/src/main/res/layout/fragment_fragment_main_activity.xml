@@ -25,11 +25,6 @@
                     android:text="Play"
                     android:id="@+id/Play"
             />
-            <Button
-                    android:text="PLAYER!!!!"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/button_fragment_main_activity"/>
 
         </LinearLayout>
         <LinearLayout

@@ -33,9 +33,14 @@ class MainActivity : AppCompatActivity(), MyRecyclerViewAdapter.OnSongListner {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        button_fragment_main_activity.setOnClickListener{
+            startActivity(Intent(this, PlayerAndEqualizerActivity::class.java))
+        }
+
         val adapterOfMainActivity = MyViewPagerAdapter(supportFragmentManager)
-        adapterOfMainActivity.addFragment(FragmentMainActivity(), "My Playlist ")
-        adapterOfMainActivity.addFragment(FragmentPlaylist(), "Playlist ")
+        adapterOfMainActivity.addFragment(FragmentPlaylist(), "←")
+        adapterOfMainActivity.addFragment(FragmentMainActivity(), "Name of currrent playlist thb etghb netghn")
+
 
         vpOfMainActivity.adapter=adapterOfMainActivity
         tabsOfMainActivity.setupWithViewPager(vpOfMainActivity)

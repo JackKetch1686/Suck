@@ -29,9 +29,7 @@ class FragmentMainActivity :Fragment(), MyRecyclerViewAdapter.OnSongListner{
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        button_fragment_main_activity.setOnClickListener{
-            startActivity(Intent(activity, PlayerAndEqualizerActivity::class.java))
-        }
+
         recycler_view.layoutManager = LinearLayoutManager(activity)
         val adapterR = MyRecyclerViewAdapter( BackgroundAudioService::recyclerItems.get(BackgroundAudioService()), this)
         recycler_view.adapter = adapterR
