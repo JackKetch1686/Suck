@@ -25,11 +25,21 @@ class MainActivity : AppCompatActivity(), MyRecyclerViewAdapter.OnSongListner {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
+        button_fragment_main_activity.setOnClickListener{
+            startActivity(Intent(this, PlayerAndEqualizerActivity::class.java))
+        }
+
+        val adapterOfMainActivity = MyViewPagerAdapter(supportFragmentManager)
+        adapterOfMainActivity.addFragment(FragmentPlaylist(), "←")
+        adapterOfMainActivity.addFragment(FragmentMainActivity(), "Name of currrent playlist thb etghb netghn")
+
+
+
         SaveItems()
         startService(Intent(this, BackgroundAudioService::class.java))
-        val adapterOfMainActivity = MyViewPagerAdapter(supportFragmentManager)
-        adapterOfMainActivity.addFragment(FragmentMainActivity(), "My Playlist ")
-        adapterOfMainActivity.addFragment(FragmentPlaylist(), "Playlist ")
+        
         vpOfMainActivity.adapter=adapterOfMainActivity
         tabsOfMainActivity.setupWithViewPager(vpOfMainActivity)
 
