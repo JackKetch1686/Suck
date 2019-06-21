@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.myapplicatio.statics.SaveImageForPlayer
 import com.example.myapplicatio.statics.SaveItems
 import com.example.myapplicatio.statics.SaveShafle
 import kotlinx.android.synthetic.main.fragment_fragment_player.*
@@ -24,10 +25,10 @@ class FragmentPlayer :Fragment(){
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-//        PlayPausePlayer.setOnClickListener{
-//
-//        }
+        imageView.setImageBitmap(SaveImageForPlayer.image)
+        imageButton8.setOnClickListener{
+            activity!!.startService(Intent(context, BackgroundAudioService::class.java))
+        }
         button5.setOnClickListener{
             BackgroundAudioService.Companion::mediaPlayer.get().seekTo(BackgroundAudioService.Companion::mediaPlayer.get().getCurrentPosition() - 10000)
         }
@@ -65,7 +66,8 @@ class FragmentPlayer :Fragment(){
             }
 
             SaveShafle.shaf=! SaveShafle.shaf
-
+//            var number = (Math.random()* SaveItems.recyclerItems.size).toInt()
+//            activity!!.startService(Intent(context, BackgroundAudioService::class.java).putExtra("path",SaveItems.recyclerItems[number].fullName))
             BackgroundAudioService.mediaPlayer.stop()
             BackgroundAudioService.mediaPlayer.reset()
             var number = (Math.random()* SaveItems.recyclerItems.size).toInt()

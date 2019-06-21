@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplicatio.PlayListSettingsActivity
 import com.example.myapplicatio.R
+import com.example.myapplicatio.statics.PlayingSongNumber
 
 class MyRecyclerViewAdapter(var listItems: List<RecyclerItem>, val onSongListner: OnSongListner, val artist :Boolean) :
     RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder>() {
@@ -36,7 +38,8 @@ class MyRecyclerViewAdapter(var listItems: List<RecyclerItem>, val onSongListner
 
     class ViewHolder( var view: View, var onSongListner: OnSongListner,var artist: Boolean) : RecyclerView.ViewHolder(view), View.OnClickListener{
         override fun onClick(p0: View?) {
-            onSongListner.onNoteCLick(adapterPosition, artist  )
+            onSongListner.onNoteCLick(adapterPosition, artist )
+            PlayingSongNumber.number = adapterPosition
         }
 
         var song_name: TextView = view.findViewById(R.id.name_of_song)
