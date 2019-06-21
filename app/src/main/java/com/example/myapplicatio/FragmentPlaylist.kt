@@ -3,6 +3,7 @@ package com.example.myapplicatio
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,6 +29,7 @@ class FragmentPlaylist :Fragment(){
         list_of_artists.setOnItemClickListener { _, _, _, id ->
             var songs: ArrayList<RecyclerItem> = ArrayList<RecyclerItem>()
             for ( i in SaveAuthors.arrayAuthorsOfSongs[id.toInt()].songs) {
+                Log.d("Authors1",SaveAuthors.arrayAuthorsOfSongs[id.toInt()].name+" : " +i )
                 songs.add(SaveItems.recyclerItems[i])
             }
             SaveSongsOfAuthor.recyclerItems = songs

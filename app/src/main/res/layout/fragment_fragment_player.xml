@@ -53,7 +53,7 @@
                 <ImageButton
                         android:src="@android:drawable/ic_media_play"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent" android:id="@+id/imageButton6" android:layout_weight="1"/>
+                        android:layout_height="match_parent" android:id="@+id/PlayPausePlayer" android:layout_weight="1"/>
                 <ImageButton
                         android:src="@android:drawable/ic_media_ff"
                         android:layout_width="wrap_content"

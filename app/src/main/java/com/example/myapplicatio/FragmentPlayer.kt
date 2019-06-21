@@ -1,22 +1,14 @@
 package com.example.myapplicatio
 
-import android.app.Service
 import android.content.Intent
 import android.graphics.Bitmap
-import android.media.MediaPlayer
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SeekBar
-import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_fragment_main_activity.*
 import kotlinx.android.synthetic.main.fragment_fragment_player.*
 import ru.spb.designedBy239School.advancedMusicPlayer.service.BackgroundAudioService
-import java.io.File
-import kotlin.math.log
 
 class FragmentPlayer :Fragment(){
     fun resetView(bitmap: Bitmap?){
@@ -30,14 +22,23 @@ class FragmentPlayer :Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-
+        var touchCounter =1
+//        PlayPausePlayer.setOnClickListener{
+//
+//        }
         button5.setOnClickListener{
             BackgroundAudioService.Companion::mediaPlayer.get().seekTo(BackgroundAudioService.Companion::mediaPlayer.get().getCurrentPosition() - 10000)
         }
         button6.setOnClickListener{
             BackgroundAudioService.Companion::mediaPlayer.get().seekTo(BackgroundAudioService.Companion::mediaPlayer.get().getCurrentPosition() + 10000)
         }
-        imageButton6.setOnClickListener {
+        PlayPausePlayer.setOnClickListener {
+            if (touchCounter % 2 == 0) {
+                PlayPausePlayer.setImageResource(android.R.drawable.ic_media_pause)
+            } else {
+                PlayPausePlayer.setImageResource(android.R.drawable.ic_media_play)
+            }
+            touchCounter++
             if ( BackgroundAudioService.Companion::mediaPlayer.get().isPlaying) {
                 BackgroundAudioService.Companion::mediaPlayer.get().pause()
             } else{
@@ -51,8 +52,10 @@ class FragmentPlayer :Fragment(){
         imageButton5.setOnClickListener{
             BackgroundAudioService.mediaPlayer.stop()
             BackgroundAudioService.mediaPlayer.reset()
-            BackgroundAudioService.mediaPlayer.setDataSource( SaveItems.recyclerItems[(Math.random()* SaveItems.recyclerItems.size).toInt()].fullName
-            )
+            var number = (Math.random()* SaveItems.recyclerItems.size).toInt()
+            BackgroundAudioService.mediaPlayer.setDataSource( SaveItems.recyclerItems[number].fullName)
+            BackgroundAudioService.mediaPlayer.prepare()
+            BackgroundAudioService.mediaPlayer.start()
         }
 
         seekBar.setOnSeekBarChangeListener(MySeekBar2(seekBar))

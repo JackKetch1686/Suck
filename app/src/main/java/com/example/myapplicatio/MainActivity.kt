@@ -3,7 +3,6 @@ package com.example.myapplicatio
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -17,16 +16,37 @@ import ru.spb.designedBy239School.advancedMusicPlayer.adapter.MyRecyclerViewAdap
 import ru.spb.designedBy239School.advancedMusicPlayer.service.BackgroundAudioService
 
 class MainActivity : AppCompatActivity(), MyRecyclerViewAdapter.OnSongListner {
-    override fun onNoteCLick(position: Int) {
-        startService(Intent(this, BackgroundAudioService::class.java).putExtra("path", SaveItems.recyclerItems[position].fullName))
-        Log.d("ONCLICKLISTNER","MainActivity: "+position.toString())
+    override fun onNoteCLick(position: Int, artists: Boolean) {
+        if (!artists) {
+            startService(
+                Intent(this, BackgroundAudioService::class.java).putExtra(
+                    "path",
+                    SaveItems.recyclerItems[position].fullName
+                )
+            )
+        } else{
+            Intent(this, BackgroundAudioService::class.java).putExtra(
+                "path",
+                SaveSongsOfAuthor.recyclerItems[position].fullName)
+        }
     }
+//    override fun onNoteCLick(position: Int) {
+//        startService(Intent(this, BackgroundAudioService::class.java).putExtra("path", SaveItems.recyclerItems[position].fullName))
+//        Log.d("ONCLICKLISTNER","MainActivity: "+position.toString())
+//    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        imageButton11.setOnClickListener{
+        var touchCounterMain=1
+        PlayPauseButtonMain.setOnClickListener{
+            if (touchCounterMain % 2 == 0) {
+                PlayPauseButtonMain.setImageResource(android.R.drawable.ic_media_pause)
+            } else {
+                PlayPauseButtonMain.setImageResource(android.R.drawable.ic_media_play)
+            }
+            touchCounterMain++
             if (BackgroundAudioService.mediaPlayer.isPlaying){
                 BackgroundAudioService.mediaPlayer.pause()
             } else{
@@ -34,6 +54,9 @@ class MainActivity : AppCompatActivity(), MyRecyclerViewAdapter.OnSongListner {
             }
         }
 
+//        PlayPauseButtonMain.setOnClickListener {
+//
+//        }
 
         button_fragment_main_activity.setOnClickListener{
             startActivity(Intent(this, PlayerAndEqualizerActivity::class.java))
@@ -58,19 +81,30 @@ class MainActivity : AppCompatActivity(), MyRecyclerViewAdapter.OnSongListner {
         ) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), 0)
         }
+        Log.d("AUTHORS","Что происходит?")
+
+        Log.d("AUTHORS", SaveItems.recyclerItems.size.toString())
 
 
         var authors = ArrayList<String>()
+        authors.add("null")
         for (item in SaveItems.recyclerItems){
             var isAsrtist = true
             var artist  = item.SongAuthorName
+            if (artist=="null"){
+                break
+            }
             for (author in authors){
-                if (artist==author) false
+                if (artist==author) {isAsrtist= false}
             }
             if(isAsrtist){
                 authors.add(artist)
             }
         }
+
+
+        Log.d("AUTHORS", authors.size.toString())
+
 
         var arrayAuthorsOfSongs = ArrayList<AuthorOfSongs>()
         for (author in authors){
@@ -79,8 +113,8 @@ class MainActivity : AppCompatActivity(), MyRecyclerViewAdapter.OnSongListner {
             for (item in SaveItems.recyclerItems){
                 if (author==item.SongAuthorName){
                     songs.add(j)
-                    j++
                 }
+                j++
             }
             arrayAuthorsOfSongs.add(AuthorOfSongs(author, songs))
         }

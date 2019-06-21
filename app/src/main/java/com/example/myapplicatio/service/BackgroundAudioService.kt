@@ -57,13 +57,15 @@ class BackgroundAudioService:Service(),MediaPlayer.OnCompletionListener {
             mediaPlayer = MediaPlayer.create(this, File(path).toUri())
             var m = MediaMetadataRetriever()
             m.setDataSource(path)
-            if (m.embeddedPicture!= null) {
-                var bitmap = BitmapFactory.decodeByteArray(m.embeddedPicture, 0, m.embeddedPicture.size)
-                FragmentPlayer::resetView.invoke(FragmentPlayer(), bitmap)
-            }else{
-                FragmentPlayer::resetView.invoke(FragmentPlayer(), null)
 
-            }
+//            if (m.embeddedPicture!= null) {
+//                var bitmap = BitmapFactory.decodeByteArray(m.embeddedPicture, 0, m.embeddedPicture.size)
+//                FragmentPlayer::resetView.invoke(FragmentPlayer(), bitmap)
+//            }else{
+//                FragmentPlayer::resetView.invoke(FragmentPlayer(), null)
+//
+//            }
+
             mediaPlayer.start()
         }
 

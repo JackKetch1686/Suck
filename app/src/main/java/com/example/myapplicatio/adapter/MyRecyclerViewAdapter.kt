@@ -10,12 +10,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplicatio.R
 
-class MyRecyclerViewAdapter(var listItems: List<RecyclerItem>, val onSongListner: OnSongListner) :
+class MyRecyclerViewAdapter(var listItems: List<RecyclerItem>, val onSongListner: OnSongListner, val artist :Boolean) :
     RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         var v: View = LayoutInflater.from(parent.context).inflate(R.layout.recycler_item, parent, false)
-        return ViewHolder(v, onSongListner)
+        return ViewHolder(v, onSongListner, artist)
     }
 
     override fun getItemCount(): Int {
@@ -34,9 +34,9 @@ class MyRecyclerViewAdapter(var listItems: List<RecyclerItem>, val onSongListner
         }
     }
 
-    class ViewHolder( var view: View, var onSongListner: OnSongListner) : RecyclerView.ViewHolder(view), View.OnClickListener{
+    class ViewHolder( var view: View, var onSongListner: OnSongListner,var artist: Boolean) : RecyclerView.ViewHolder(view), View.OnClickListener{
         override fun onClick(p0: View?) {
-            onSongListner.onNoteCLick(adapterPosition)
+            onSongListner.onNoteCLick(adapterPosition, artist  )
         }
 
         var song_name: TextView = view.findViewById(R.id.name_of_song)
@@ -49,6 +49,6 @@ class MyRecyclerViewAdapter(var listItems: List<RecyclerItem>, val onSongListner
 
     }
     interface OnSongListner{
-        fun onNoteCLick(position: Int)
+        fun onNoteCLick(position: Int,artists: Boolean)
     }
 }
