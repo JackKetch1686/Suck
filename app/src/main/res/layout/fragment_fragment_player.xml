@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content" android:layout_weight="0.05" android:orientation="vertical">
             <SeekBar
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:id="@+id/seekBar2" android:layout_weight="0.2"/>
+                    android:layout_height="wrap_content" android:id="@+id/seek_Bar_progress" android:layout_weight="0.2"/>
             <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"

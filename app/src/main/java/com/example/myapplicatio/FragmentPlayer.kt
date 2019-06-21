@@ -3,6 +3,7 @@ package com.example.myapplicatio
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,12 +30,27 @@ class FragmentPlayer :Fragment(){
         imageButton8.setOnClickListener{
             activity!!.startService(Intent(context, BackgroundAudioService::class.java))
         }
+        var kill = false
+
+        seek_Bar_progress.max = BackgroundAudioService.mediaPlayer.duration
+        val SeekbarUpdateHandler = Handler()
+        val UpdateSeekbar = object : Runnable {
+            override fun run() {
+                if(!kill) {
+                    seek_Bar_progress.progress = BackgroundAudioService.mediaPlayer.currentPosition
+                    SeekbarUpdateHandler.postDelayed(this, 100)
+                }
+//current_time.text = (seekBar.progress / 1000).toString()
+            }
+        }
         button5.setOnClickListener{
             BackgroundAudioService.Companion::mediaPlayer.get().seekTo(BackgroundAudioService.Companion::mediaPlayer.get().getCurrentPosition() - 10000)
         }
         button6.setOnClickListener{
             BackgroundAudioService.Companion::mediaPlayer.get().seekTo(BackgroundAudioService.Companion::mediaPlayer.get().getCurrentPosition() + 10000)
         }
+
+        SeekbarUpdateHandler.postDelayed(UpdateSeekbar, 0)
         PlayPausePlayer.setOnClickListener {
             if (!BackgroundAudioService.mediaPlayer.isPlaying) {
                 PlayPausePlayer.setImageResource(android.R.drawable.ic_media_pause)
@@ -43,8 +59,11 @@ class FragmentPlayer :Fragment(){
             }
             if ( BackgroundAudioService.Companion::mediaPlayer.get().isPlaying) {
                 BackgroundAudioService.Companion::mediaPlayer.get().pause()
+                SeekbarUpdateHandler.removeCallbacks(UpdateSeekbar)
             } else{
                 BackgroundAudioService.Companion::mediaPlayer.get().start()
+                SeekbarUpdateHandler.postDelayed(UpdateSeekbar, 100)
+
             }
         }
         repeatButton.setOnClickListener{
@@ -77,10 +96,13 @@ class FragmentPlayer :Fragment(){
         }
 
         seekBar.setOnSeekBarChangeListener(MySeekBar2(seekBar))
-        seekBar2.setOnSeekBarChangeListener( MySeekBarChangeListner(seekBar2))
+        seek_Bar_progress.setOnSeekBarChangeListener( MySeekBarChangeListner(seek_Bar_progress))
 
         backToMainActivity.setOnClickListener{
             startActivity(Intent(activity, MainActivity::class.java))
+            kill = true
+
+            //////////!!!!!!!!!!!!!!!!!!!!!!!!!!
         }
 
     }
