@@ -115,24 +115,44 @@ class FragmentEqualizer :Fragment() {
             }
         })
 
+//        preset_1.setOnClickListener {
+//            equalizer.usePreset(1)
+//            Log.d("EQ", "Preset 1")
+//        }
+//
+//        preset_2.setOnClickListener {
+//            equalizer.usePreset(2)
+//            Log.d("EQ", "Preset 2")
+//        }
+        val bars = arrayListOf(eq_seek_bar_0, eq_seek_bar_1,
+            eq_seek_bar_2, eq_seek_bar_3, eq_seek_bar_4)
+        var bandNumber = 0
+        preset_1.text = equalizer.getPresetName(1)
+        preset_2.text = equalizer.getPresetName(2)
+
         preset_1.setOnClickListener {
             equalizer.usePreset(1)
             Log.d("EQ", "Preset 1")
+            for (bar in bars) {
+                bar.progress = equalizer.properties.bandLevels[bandNumber.toInt()].toInt()
+                bandNumber ++
+            }
+            bandNumber = 0
+
         }
 
         preset_2.setOnClickListener {
             equalizer.usePreset(2)
             Log.d("EQ", "Preset 2")
+            for (bar in bars) {
+                bar.progress = equalizer.properties.bandLevels[bandNumber.toInt()].toInt()
+                bandNumber ++
+            }
+            bandNumber = 0
         }
 
 
     }
-
-
-//    override fun onSaveInstanceState(outState: Bundle) {
-//        requireActivity().getSharedPreferences("Sas", Context.MODE_PRIVATE).edit().putInt("key", 1).apply()
-//        requireActivity().getSharedPreferences("SAs", Context.MODE_PRIVATE).getInt("key", 0)
-//    }
 
     override fun onPause() {
         super.onPause()

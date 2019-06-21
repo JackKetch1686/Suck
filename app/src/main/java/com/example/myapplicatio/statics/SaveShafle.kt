@@ -1,10 +1,9 @@
-package com.example.myapplicatio
+package com.example.myapplicatio.statics
 
 import ru.spb.designedBy239School.advancedMusicPlayer.adapter.RecyclerItem
 
-class SaveSongsOfAuthor {
-
+class SaveShafle {
     companion object itemsOfMusicByAuthor {
-        lateinit var recyclerItems: ArrayList<RecyclerItem>
+        var shaf: Boolean= false
     }
 }

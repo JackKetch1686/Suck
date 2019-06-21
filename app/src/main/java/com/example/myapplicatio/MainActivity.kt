@@ -11,6 +11,9 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import com.example.myapplicatio.statics.SaveAuthorsSongs
+import com.example.myapplicatio.statics.SaveItems
+import com.example.myapplicatio.statics.SaveSongsOfAuthor
 import kotlinx.android.synthetic.main.activity_main.*
 import ru.spb.designedBy239School.advancedMusicPlayer.adapter.MyRecyclerViewAdapter
 import ru.spb.designedBy239School.advancedMusicPlayer.service.BackgroundAudioService
@@ -39,14 +42,13 @@ class MainActivity : AppCompatActivity(), MyRecyclerViewAdapter.OnSongListner {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var touchCounterMain=1
+
         PlayPauseButtonMain.setOnClickListener{
-            if (touchCounterMain % 2 == 0) {
+            if (!BackgroundAudioService.mediaPlayer.isPlaying) {
                 PlayPauseButtonMain.setImageResource(android.R.drawable.ic_media_pause)
             } else {
                 PlayPauseButtonMain.setImageResource(android.R.drawable.ic_media_play)
             }
-            touchCounterMain++
             if (BackgroundAudioService.mediaPlayer.isPlaying){
                 BackgroundAudioService.mediaPlayer.pause()
             } else{
@@ -63,8 +65,8 @@ class MainActivity : AppCompatActivity(), MyRecyclerViewAdapter.OnSongListner {
         }
 
         val adapterOfMainActivity = MyViewPagerAdapter(supportFragmentManager)
-        adapterOfMainActivity.addFragment(FragmentPlaylist(), "←")
-        adapterOfMainActivity.addFragment(FragmentMainActivity(), "Name of currrent playlist thb etghb netghn")
+        adapterOfMainActivity.addFragment(FragmentPlaylist(), "Authors")
+        adapterOfMainActivity.addFragment(FragmentMainActivity(), "All music" )
 
 
 
@@ -87,7 +89,6 @@ class MainActivity : AppCompatActivity(), MyRecyclerViewAdapter.OnSongListner {
 
 
         var authors = ArrayList<String>()
-        authors.add("null")
         for (item in SaveItems.recyclerItems){
             var isAsrtist = true
             var artist  = item.SongAuthorName
@@ -118,7 +119,7 @@ class MainActivity : AppCompatActivity(), MyRecyclerViewAdapter.OnSongListner {
             }
             arrayAuthorsOfSongs.add(AuthorOfSongs(author, songs))
         }
-        SaveAuthors.arrayAuthorsOfSongs=arrayAuthorsOfSongs
+        SaveAuthorsSongs.arrayAuthorsOfSongs=arrayAuthorsOfSongs
 
     }
 

@@ -1,4 +1,4 @@
-package com.example.myapplicatio
+package com.example.myapplicatio.statics
 
 import android.media.MediaMetadataRetriever
 import android.os.Environment

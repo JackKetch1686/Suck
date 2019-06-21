@@ -2,16 +2,14 @@ package ru.spb.designedBy239School.advancedMusicPlayer.service
 
 import android.app.Service
 import android.content.Intent
-import android.graphics.BitmapFactory
 import android.media.MediaMetadataRetriever
 import android.media.MediaPlayer
-import android.os.Environment
 import android.os.IBinder
 import android.util.Log
 import androidx.core.net.toUri
-import androidx.fragment.app.Fragment
-import com.example.myapplicatio.FragmentPlayer
-import ru.spb.designedBy239School.advancedMusicPlayer.adapter.RecyclerItem
+import com.example.myapplicatio.statics.IsArtists
+import com.example.myapplicatio.statics.SaveItems
+import com.example.myapplicatio.statics.SaveShafle
 import java.io.File
 
 class BackgroundAudioService:Service(),MediaPlayer.OnCompletionListener {
@@ -32,12 +30,30 @@ class BackgroundAudioService:Service(),MediaPlayer.OnCompletionListener {
         Log.d("ONCLICKLISTNER","Service 2")
 
     }
-
     override fun onCreate() {
         Log.d("ONCLICKLISTNER","Service 3")
         mediaPlayer = MediaPlayer()
+        mediaPlayer.setOnCompletionListener {
+            if (SaveShafle.shaf){
+                BackgroundAudioService.mediaPlayer.stop()
+                BackgroundAudioService.mediaPlayer.reset()
+                var number = (Math.random()* SaveItems.recyclerItems.size).toInt()
+                BackgroundAudioService.mediaPlayer.setDataSource( SaveItems.recyclerItems[number].fullName)
+                BackgroundAudioService.mediaPlayer.prepare()
+                BackgroundAudioService.mediaPlayer.start()
+            } else{
+                if (IsArtists.artists){
 
 
+
+                } else{
+
+
+
+                }
+
+            }
+        }
     }
 
     override fun onDestroy() {

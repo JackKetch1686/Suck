@@ -9,6 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
+import com.example.myapplicatio.statics.IsArtists
+import com.example.myapplicatio.statics.SaveAuthorsSongs
+import com.example.myapplicatio.statics.SaveItems
+import com.example.myapplicatio.statics.SaveSongsOfAuthor
 import kotlinx.android.synthetic.main.fragment_fragment_playlist.*
 import ru.spb.designedBy239School.advancedMusicPlayer.adapter.RecyclerItem
 
@@ -19,7 +23,7 @@ class FragmentPlaylist :Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         var artists =  ArrayList<String>()
-        for (i in SaveAuthors.arrayAuthorsOfSongs){
+        for (i in SaveAuthorsSongs.arrayAuthorsOfSongs){
             artists.add(i.name)
         }
 
@@ -28,12 +32,14 @@ class FragmentPlaylist :Fragment(){
 
         list_of_artists.setOnItemClickListener { _, _, _, id ->
             var songs: ArrayList<RecyclerItem> = ArrayList<RecyclerItem>()
-            for ( i in SaveAuthors.arrayAuthorsOfSongs[id.toInt()].songs) {
-                Log.d("Authors1",SaveAuthors.arrayAuthorsOfSongs[id.toInt()].name+" : " +i )
+            for ( i in SaveAuthorsSongs.arrayAuthorsOfSongs[id.toInt()].songs) {
+                Log.d("Authors1", SaveAuthorsSongs.arrayAuthorsOfSongs[id.toInt()].name+" : " +i )
                 songs.add(SaveItems.recyclerItems[i])
             }
             SaveSongsOfAuthor.recyclerItems = songs
             activity!!.startActivity(Intent(context, PlayListSettingsActivity::class.java))
+            IsArtists.artists=true
+
         }
     }
 }

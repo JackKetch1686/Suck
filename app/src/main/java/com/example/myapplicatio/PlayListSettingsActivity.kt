@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_fragment_main_activity.*
+import com.example.myapplicatio.statics.SaveItems
+import com.example.myapplicatio.statics.SaveSongsOfAuthor
+import kotlinx.android.synthetic.main.activity_play_list_settings.*
+import kotlinx.android.synthetic.main.fragment_fragment_main_activity.recycler_view
 import ru.spb.designedBy239School.advancedMusicPlayer.adapter.MyRecyclerViewAdapter
 import ru.spb.designedBy239School.advancedMusicPlayer.service.BackgroundAudioService
 
@@ -23,7 +26,7 @@ class PlayListSettingsActivity : AppCompatActivity(),  MyRecyclerViewAdapter.OnS
             )
         } else{
             Log.d("CLICKPlaylist","2")
-            Log.d("CLICKPlaylist",SaveSongsOfAuthor.recyclerItems[position].fullName)
+            Log.d("CLICKPlaylist", SaveSongsOfAuthor.recyclerItems[position].fullName)
             this.startService(
             Intent(this, BackgroundAudioService::class.java).
                 putExtra("path", SaveSongsOfAuthor.recyclerItems[position].fullName)
@@ -43,6 +46,18 @@ class PlayListSettingsActivity : AppCompatActivity(),  MyRecyclerViewAdapter.OnS
         recycler_view.layoutManager = LinearLayoutManager(this)
         val adapterR = MyRecyclerViewAdapter( SaveSongsOfAuthor.recyclerItems, this, true)
         recycler_view.adapter = adapterR
+        PlayPauseButtonMain_settings.setOnClickListener{
+            if (!BackgroundAudioService.mediaPlayer.isPlaying) {
+                PlayPauseButtonMain_settings.setImageResource(android.R.drawable.ic_media_pause)
+            } else {
+                PlayPauseButtonMain_settings.setImageResource(android.R.drawable.ic_media_play)
+            }
+            if (BackgroundAudioService.mediaPlayer.isPlaying){
+                BackgroundAudioService.mediaPlayer.pause()
+            } else{
+                BackgroundAudioService.mediaPlayer.start()
+            }
+        }
 
 
     }

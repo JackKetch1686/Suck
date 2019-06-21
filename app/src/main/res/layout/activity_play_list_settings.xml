@@ -2,18 +2,18 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
-             android:layout_height="match_parent"
+             android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
              tools:context=".FragmentMainActivity">
 
 
     <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
+                  android:layout_height="match_parent"
                   android:orientation="vertical"
     >
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="500"
                 android:layout_height="wrap_content">
             <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
@@ -22,6 +22,24 @@
             >
 
             </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_weight="1"
+                android:layout_gravity="bottom"
+        >
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@android:drawable/ic_media_play"
+                    android:id="@+id/PlayPauseButtonMain_settings" android:layout_weight="1"
+                    android:src="@android:drawable/ic_media_play"/>
+            <Button
+                    android:text="current song"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" android:id="@+id/button_fragment_main_activity"
+                    android:layout_weight="30"/>
         </LinearLayout>
     </LinearLayout>
 

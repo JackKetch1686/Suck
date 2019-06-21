@@ -1,4 +1,4 @@
-package com.example.myapplicatio
+package com.example.myapplicatio.statics
 
 
 class SaveImageForPlayer {
