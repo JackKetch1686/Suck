@@ -39,6 +39,9 @@ class PlayListSettingsActivity : AppCompatActivity(),  MyRecyclerViewAdapter.OnS
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_play_list_settings)
 
+        button_fragment_main_activity.setOnClickListener {
+            startActivity(Intent(this, PlayerAndEqualizerActivity::class.java))
+        }
         for (i in SaveSongsOfAuthor.recyclerItems){
             Log.d("AUTHORS2", i.SongAuthorName+" "+ i.SongName)
         }
@@ -58,6 +61,7 @@ class PlayListSettingsActivity : AppCompatActivity(),  MyRecyclerViewAdapter.OnS
                 BackgroundAudioService.mediaPlayer.start()
             }
         }
+
 
 
     }
